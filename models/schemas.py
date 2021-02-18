@@ -22,6 +22,7 @@ class Article(ArticleBase):
 
 class UserBase(BaseModel):
     email: str
+    username: str
 
 
 class UserCreate(UserBase):
@@ -30,8 +31,11 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
-    is_active: bool
-    items: List[Article] = []
+    articles: List[Article] = []
 
     class Config:
         orm_mode = True
+
+
+class Token(BaseModel):
+    token: str
